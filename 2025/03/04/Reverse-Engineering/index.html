@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    p{
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        font-size: 1.1rem;
+    }
+    figure{
+        margin: 0 !important;
+    }
+    pre{
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    td{
+        padding: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    h1,h2,h3,h4,h5,h6{
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFpwner - Reverse-Engineering</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    
+<header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
+    <div class="container mx-auto flex items-center justify-between space-x-8">
+    
+      <h1 class="text-2xl font-bold ml-[100px] md:ml-0 animate-pulse text-hacker-color1 md:mr-[20%]">
+        <a href="/" class="hover:text-white transition-colors select-none">
+          RFpwner
+        </a>
+      </h1>
+  
+    <!-- 大屏幕 -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          
+            <li>
+              <a href="/" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                RFpwner
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Archives
+              </a>
+            </li>
+          
+            <li>
+              <a href="/categories" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Categories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Tags
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/rss.xml" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                RSS
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+  
+      <!-- 小屏幕 -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 折叠菜单 -->
+    <nav id="mobile-menu" class="hidden bg-black">
+      <ul class="space-y-2 py-4 px-6">
+        
+          <li>
+            <a href="/" class="block text-white hover:text-hacker-color1 transition-colors">
+              RFpwner
+            </a>
+          </li>
+        
+          <li>
+            <a href="/archives" class="block text-white hover:text-hacker-color1 transition-colors">
+              Archives
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories" class="block text-white hover:text-hacker-color1 transition-colors">
+              Categories
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags" class="block text-white hover:text-hacker-color1 transition-colors">
+              Tags
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about" class="block text-white hover:text-hacker-color1 transition-colors">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/rss.xml" class="block text-white hover:text-hacker-color1 transition-colors">
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+  
+    <!-- RSS Link -->
+    <link rel="alternate" type="application/rss+xml" title=" RSS" href="/rss.xml" />
+  </header>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/search.js"></script>
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        } else {
+        mobileMenu.classList.add("hidden");
+        }
+    });
+    });
+
+  </script>
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body class="bg-black text-hacker-color3 container mx-auto">
+    <!-- 文章标题 -->
+    <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">Reverse-Engineering</h1>
+
+    <!-- 发布时间 -->
+    <p class="text-hacker-color3 text-center text-sm mb-4">
+        2025-03-04
+    </p>
+
+    <!-- 文章内容 -->
+    <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight">
+        <h1 id="配置连接"><a href="#配置连接" class="headerlink" title="配置连接"></a>配置连接</h1><p>1.运行<code>ssh-keygen -f key -N &#39;&#39;</code>命令，这会在当前目录下生成key和key.pub文件，分别是公钥和私钥。</p>
+<p>2.<code>cat key.pub</code>打印key.pub文件内容。</p>
+<p>3.将打印出的内容复制粘贴到Settings-&gt;SSH Key中。</p>
+<p>4.<code>ssh -i key hacker@dojo.pwn.college</code>连接至靶机</p>
+<p>ssh -i key <a href="mailto:&#104;&#97;&#x63;&#x6b;&#101;&#114;&#64;&#x64;&#111;&#106;&#111;&#46;&#x70;&#119;&#110;&#x2e;&#x63;&#111;&#108;&#x6c;&#101;&#x67;&#101;">&#104;&#97;&#x63;&#x6b;&#101;&#114;&#64;&#x64;&#111;&#106;&#111;&#46;&#x70;&#119;&#110;&#x2e;&#x63;&#111;&#108;&#x6c;&#101;&#x67;&#101;</a></p>
+<h1 id="视频内容"><a href="#视频内容" class="headerlink" title="视频内容"></a>视频内容</h1><h2 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1731939439682.png" alt="QQ_1731939439682"></p>
+<p>这个过程中，信息总会丢失一些，所以逆向就是挖掘这些</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731939622787.png" alt="QQ_1731939622787"></p>
+<p>前向工程工具</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731940359988.png" alt="QQ_1731940359988"></p>
+<p>编译过程中会删除掉所有的宏定义，注释，之后生成汇编代码，并且替换掉了变量，用地址和偏移进行替换，通过strip 命令，可以移除调试符号和其他不必要的信息，从而减少文件大小并且提高加载效率，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731940160453.png" alt="QQ_1731940160453"></p>
+<p>gcc -g可以包括所有的，包括像类型，变量名变量大小等调试信息</p>
+<h2 id="function-and-frames"><a href="#function-and-frames" class="headerlink" title="function and frames"></a>function and frames</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1731940466390.png" alt="QQ_1731940466390"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731940589345.png" alt="QQ_1731940589345"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731940673003.png" alt="QQ_1731940673003"></p>
+<p>函数其实可以被表示为一个图，每一个块都是将一条条执行的指令，然后块被边连接着，也就是各种条件或者无条件跳转，之后通过理解这些触发跳转的条件，来理解函数逻辑</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731940867906.png" alt="QQ_1731940867906"></p>
+<p>蓝线代表着无条件跳转，绿线代表着条件跳转，</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p><img src="/2025/03/04/Reverse-Engineering/image-20241118224510754.png" alt="image-20241118224510754"></p>
+<p>局部变量放在了栈上面，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731941491422.png" alt="QQ_1731941491422"></p>
+<p>call之后先压栈下一条指令的地址，之后存储rbp，</p>
+<p>退栈不物理清除数据，因此可能导致数据泄漏，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731941685339.png" alt="QQ_1731941685339"></p>
+<h2 id="data-access"><a href="#data-access" class="headerlink" title="data access"></a>data access</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1731941873567.png" alt="QQ_1731941873567"></p>
+<p><strong>栈上的数据</strong></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731941936296.png" alt="QQ_1731941936296"></p>
+<p>elf<strong>节中的变量</strong></p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241118230116314.png" alt="image-20241118230116314"></p>
+<p>这些一般都和指令有固定的偏移，通常通过rip 相对寻址去进行访问</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731942152969.png" alt="QQ_1731942152969"></p>
+<p>会发现，程序被映射到内存中两次，一次是代码，一次是用于数据段，因此，代码和数据是从两个不同的区域进行访问的，</p>
+<p><strong>堆中的数据</strong></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731942313133.png" alt="QQ_1731942313133"></p>
+<p>访问堆的指针通常存放在栈上，第一个存放在栈上的是数据，直接取出来rsp，rsp相当于是他的地址，之后解引用就可以获得数据，而第二个相当于将访问数据的指针存放在了栈上，获取到指针之后还需要堆指针进行进一步的解引用才能获取到后续的数据</p>
+<p><strong>数据结构</strong></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731942546591.png" alt="QQ_1731942546591"></p>
+<p>获得该类数据你需要知道他都有什么东西，然后怎么存储的，怎么访问的怎么使用的，然后才能逆向出正确的数据</p>
+<h2 id="静态逆向工具"><a href="#静态逆向工具" class="headerlink" title="静态逆向工具"></a>静态逆向工具</h2><p>指的是，不运行的时候就能分析的工具，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731942696072.png" alt="QQ_1731942696072"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241118231523162.png" alt="image-20241118231523162"></p>
+<p>比如checksec后发现了有12个符号，之后通过nm -a来列举所有的符号，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731942981591.png" alt="QQ_1731942981591"></p>
+<p>课程里用的binary ninja cloud，免费</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731943334981.png" alt="QQ_1731943334981"></p>
+<p>左上角这里，这里可以显示更多的信息，包括指令详细的操作码字节等等，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731943413054.png" alt="QQ_1731943413054"></p>
+<p>这里可以显示更熟悉的线性的界面，右键指令可以进行注释</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731943510694.png" alt="QQ_1731943510694"></p>
+<p>这里的高级分析，能够分析的更加详细，并且进行反编译，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731943704073.png" alt="QQ_1731943704073"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1731943737736.png" alt="QQ_1731943737736"></p>
+<p>但是他有可能抽象错细节，所以在这个课程里最好还是只用汇编视图</p>
+<h2 id="Dynamic"><a href="#Dynamic" class="headerlink" title="Dynamic"></a>Dynamic</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732157745858.png" alt="QQ_1732157745858"></p>
+<p>一个是追踪库调用，一个是追踪系统调用</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732157926525.png" alt="QQ_1732157926525"></p>
+<p>强烈建议加入init文件的</p>
+<p>info proc map，能够查看映射的地址</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732158363246.png" alt="QQ_1732158363246"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732158430150.png" alt="QQ_1732158430150"></p>
+<p>位置相关代码始终加载在同一个内存位置，但是内存无关代码并不是，gdb尝试永远在这个范围加载，最简单的就是通过set $base</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732158581019.png" alt="QQ_1732158581019"></p>
+<p>通过-M可以指定汇编类型</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732158757967.png" alt="QQ_1732158757967"></p>
+<p>gdb自带的重放比较低效，因此，rr更高效，但pwncollege不能用rr，kira比较简洁，用于逆向工程，还有reverse step in，rsi，会反向进行移动，前提是前面进行了record，但是有时候不准，当再次进行录音的时候，不会再次系统调用，只是重播录音</p>
+<h2 id="real-world-app"><a href="#real-world-app" class="headerlink" title="real world app"></a>real world app</h2><h1 id="challenge"><a href="#challenge" class="headerlink" title="challenge"></a>challenge</h1><h2 id="Level1-0"><a href="#Level1-0" class="headerlink" title="Level1.0"></a>Level1.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732081107293.png" alt="QQ_1732081107293"></p>
+<p>看一下程序</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732081126665.png" alt="QQ_1732081126665"></p>
+<p>看这个样子，read读入了输出，打印出来对应的ascii码，然后，跟他对应的去比，得到最后的结果，对就给flag，那输入他要的就行</p>
+<h2 id="level1-1"><a href="#level1-1" class="headerlink" title="level1.1"></a>level1.1</h2><p>没啥区别啊感觉，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732161158309.png" alt="QQ_1732161158309"></p>
+<p>然后那个地址点进去，是数据段的一个数据</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732161177340.png" alt="QQ_1732161177340"></p>
+<h2 id="Level2-0"><a href="#Level2-0" class="headerlink" title="Level2.0"></a>Level2.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732166871690.png" alt="QQ_1732166871690"></p>
+<p>1和4倒换jvsyo</p>
+<p>那就是yvsjo，显示不对，那就是josyv</p>
+<h2 id="Level2-1"><a href="#Level2-1" class="headerlink" title="Level2.1"></a>Level2.1</h2><p>gdkjs</p>
+<p>那就是gskjd</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732167278042.png" alt="QQ_1732167278042"></p>
+<p>buf是int，4个字节，hibyte很有可能就是第四个字节，因此对应的byte就是第三个，所以</p>
+<p>是1和3互换了，gjkds</p>
+<h2 id="Level3-0"><a href="#Level3-0" class="headerlink" title="Level3.0"></a>Level3.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732167464896.png" alt="QQ_1732167464896"></p>
+<p>看这个样子，换了两次，第一次0和4互换之后，1和3互换，</p>
+<p>hvfsy</p>
+<p>ysfvh</p>
+<h2 id="level3-1"><a href="#level3-1" class="headerlink" title="level3.1"></a>level3.1</h2><p>jcaup</p>
+<p>puacj</p>
+<h2 id="Level4-0"><a href="#Level4-0" class="headerlink" title="Level4.0"></a>Level4.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732168685059.png" alt="QQ_1732168685059"></p>
+<p>看起来是冒泡</p>
+<p>jlvxy</p>
+<h2 id="level5-0"><a href="#level5-0" class="headerlink" title="level5.0"></a>level5.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732169761183.png" alt="QQ_1732169761183"></p>
+<p>看这个样子是全都异或了0x50，那就他要的再xor一次0x50就抵消了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">str_to_byte</span>(<span class="hljs-params">input_string: <span class="hljs-built_in">str</span>, key: <span class="hljs-built_in">int</span> = <span class="hljs-number">0x50</span></span>) -&gt;<span class="hljs-built_in">str</span>:<br>    input_bytes = input_string.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)  <span class="hljs-comment"># 将字符串转换为字节</span><br><br>    <span class="hljs-comment"># 对每个字节异或指定值</span><br>    xor_result = <span class="hljs-built_in">bytes</span>([b ^ key <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> input_bytes])<br><br>    <span class="hljs-comment"># 将异或结果转换回字符串</span><br>    <span class="hljs-keyword">return</span> xor_result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br><span class="hljs-built_in">str</span>=<span class="hljs-string">&quot;6?5%(&quot;</span><br>result=str_to_byte(<span class="hljs-built_in">str</span>,<span class="hljs-number">0x50</span>)<br><span class="hljs-built_in">print</span>(result)<br><br></code></pre></td></tr></table></figure>
+<p>首先encode将其转换为字节，之后异或，然后转换回来</p>
+<h2 id="level5-1"><a href="#level5-1" class="headerlink" title="level5.1"></a>level5.1</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732171545231.png" alt="QQ_1732171545231"></p>
+<p>变成了0x46</p>
+<p>4&lt;/‘,27h,’7</p>
+<p>那应该就是4&lt;/‘7</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732171775083.png" alt="QQ_1732171775083"></p>
+<p>直接在双引号里’，就已经是单引号了</p>
+<h2 id="Level6-0"><a href="#Level6-0" class="headerlink" title="Level6.0"></a>Level6.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732171929291.png" alt="QQ_1732171929291"></p>
+<p>其实就是每三个字节每三个字节的进行异或,并且还进行了逆转，还进行了排序，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732174268726.png" alt="QQ_1732174268726"></p>
+<p>reverse主要把整个字符串反过来，1然后sort进行了一次冒泡排序，所以，对应的expected应该和这个反过来，首先既然是冒泡排序过的，那这个expected本身就应该是一个已经排序过的，果然，<img src="/2025/03/04/Reverse-Engineering/QQ_1732174477205.png" alt="QQ_1732174477205"></p>
+<p>所以只要对应的字节没有错就行，接下来，那这个reverse也没有任何的用哇，但是他每三个字节每三个字节的进行一次对应，如何确保最开始的和最终的那个三字节的对应是一样的呢，所以干脆就不管这些，直接全都逆转一遍，一定是没有错的</p>
+<p>果然就是什么都不用管，只需要去对应字节就行，因为排序和那个都是失效的</p>
+<figure class="highlight leaf"><table><tr><td class="code"><pre><code class="hljs leaf">from pwn import *<br>def process_hex_list(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 3 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0xDA)<br>        elif i % 3 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x92)<br>        elif i % 3 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xAD)<br>    <br>    <span class="hljs-punctuation">#</span> 转换为字符串<br>    return &#x27;&#x27;.join(chr(b) for b in processed_bytes)<br><br><span class="hljs-punctuation">#</span> 示例十六进制列表<br>hex_list = [0xA0, 0xAC, 0xB4, 0xB5, 0xB7, 0xB7, 0xC1, 0xC1,<br>            0xC6, 0xCB, 0xD9, 0xDC, 0xE3, 0xE5, 0xE7, 0xE8,<br>            0xEB, 0xFB]<br><br><span class="hljs-punctuation">#</span> 调用函数<br>result = process_hex_list(hex_list)<br>print(result)<br>p=process(&#x27;/challenge/babyrev-level-6-0&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">ques</span>=p.recvuntil(b&#x27;Ready to receive your license key!&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">ques</span>.<span class="hljs-keyword">decode</span><span class="hljs-params">()</span>)</span><br>p.sendline(result.encode())<br>sleep(5)  <span class="hljs-punctuation">#</span> 等待程序输出完整<br><br>out=p.recv(4096)<br>print(out.decode())<br></code></pre></td></tr></table></figure>
+<p>最后一个sleep很关键，不然的话调用recv的时候还没有接受完整，同时上面这个对list进行处理之后转换为str的方式可以借鉴，感觉很妙，通过append进行一个个的附加</p>
+<h2 id="Level6-1"><a href="#Level6-1" class="headerlink" title="Level6.1"></a>Level6.1</h2><p>xqivthjqkczwowzxtdi</p>
+<p>0x13个字节，也就是19，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732176954926.png" alt="QQ_1732176954926"></p>
+<p>这不就啥也没干没</p>
+<p>哦，坑在这里，buf是一个8字节的，而读取了19个字节，因此，后面的v9，v10，一共12个字节里有11个也属于这个范围里，注意中间夹杂里一次，v9的第三个字节，等于第12个字节和v10的最低位，也就是第17个字节进行了对换，所以，因为进行了一次反转，就是第三个和第八个进行了一次互换</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732189975804.png" alt="QQ_1732189975804"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732190017931.png" alt="QQ_1732190017931"></p>
+<h2 id="Level7-0"><a href="#Level7-0" class="headerlink" title="Level7.0"></a>Level7.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732190707860.png" alt="QQ_1732190707860"></p>
+<p>异或变成了以组为单位，其次，输入了26个字符，经过了，异或，逆转，排序，逆转，逆转，那就是说最后实际还是逆转过一次的，把expected，进行一次逆转，之后直接进行异或就是最后的答案,不对，排序在逆转之后，并且之后有两次逆转，所以根本不需要逆转，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732192115688.png" alt="QQ_1732192115688"></p>
+<p>排序是排成一个前小后大的，’a’  \x80</p>
+<p><strong>解决了</strong></p>
+<p>因为当join的时候，一些不能显示的字符打印成了\x80，这个直接杯join进了字符串，字符串实际已经不能转变为原来的那些raw字节了，发生了变化，因此直接把原始字节传输过去就行了</p>
+<figure class="highlight leaf"><table><tr><td class="code"><pre><code class="hljs leaf">from pwn import *<br>def process_hex_list(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 5 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x4d)<br>            print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            print(hex(processed_bytes[i]))<br>            print(&#x27;\n&#x27;)<br>        elif i % 5 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0xa5)<br>            print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            print(hex(processed_bytes[i]))<br>            print(&#x27;\n&#x27;)<br>        elif i % 5 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xa4)<br>            print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            print(hex(processed_bytes[i]))<br>            print(&#x27;\n&#x27;)<br>        elif i % 5 == 3:      <span class="hljs-punctuation">#</span> 第二个节<br>            processed_bytes.append(hex_list[i] ^ 0x39)<br>            print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            print(hex(processed_bytes[i]))<br>            print(&#x27;\n&#x27;)<br>        elif i % 5 == 4:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x88)<br>            print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            print(hex(processed_bytes[i]))<br>            print(&#x27;\n&#x27;)<br>    <br>    <span class="hljs-punctuation">#</span> 转换为字符串<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">r1</span> = &#x27;&#x27;.join(chr(b) for b in processed_bytes)<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>)</span><br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>.<span class="hljs-keyword">encode</span><span class="hljs-params">(&#x27;<span class="hljs-variable">latin1</span>&#x27;)</span>)</span><br>    return bytes(processed_bytes)<br><br><span class="hljs-punctuation">#</span> 示例十六进制列表<br>hex_list = [0x21, 0x25, 0x27, 0x27, 0x2B, 0x39, 0x43, 0x49, 0x52, 0x5B, 0x5B, <br>            0xC0, 0xC2, 0xC2, 0xC6, 0xCD, 0xCE, 0xD2, 0xD5, 0xD6, 0xD7, 0xE0, <br>            0xE2, 0xEB, 0xF8, 0xFE]<br><br><span class="hljs-punctuation">#</span> 调用函数<br>result = process_hex_list(hex_list)<br>print(result)<br>p=process(&#x27;/challenge/babyrev-level-7-0&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">ques</span>=p.recvuntil(b&#x27;Ready to receive your license key!&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">ques</span>.<span class="hljs-keyword">decode</span><span class="hljs-params">()</span>)</span><br>p.sendline(result)<br>sleep(5)  <span class="hljs-punctuation">#</span> 等待程序输出完整<br><br>out=p.recv(4096)<br>print(out.decode())<br></code></pre></td></tr></table></figure>
+<h2 id="Level7-1"><a href="#Level7-1" class="headerlink" title="Level7.1"></a>Level7.1</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732607204789.png" alt="QQ_1732607204789"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732607216265.png" alt="QQ_1732607216265"></p>
+<p>看这个样子，读了0x1c，28个字节，上面存储的时候buf只是一个int64，8个字节，所以，这里v13的第五个字节相当于是第13个字节，然后，v15相当于是第25个字节，这两个进行了互换，之后他们进行了逆序，然后进行了按字节与的操作，之后再次逆序，然后冒泡排序，那么顺序同样还是没有啥用，直接找对应的字节</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732607310786.png" alt="QQ_1732607310786"></p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss">from pwn import *<br>def <span class="hljs-built_in">process_hex_list</span>(hex_list):<br>    # 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    # 遍历列表，按每三个字节处理<br>    for i in <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(hex_list)):<br>        if i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>:        # 第一个字节<br>            processed_bytes.<span class="hljs-built_in">append</span>(hex_list[i] ^ <span class="hljs-number">0</span>x2c)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;processed_bytes[%d]: &#x27;</span>,i)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(processed_bytes[i]))<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        elif i % <span class="hljs-number">5</span> == <span class="hljs-number">1</span>:      # 第二个字节<br>            processed_bytes.<span class="hljs-built_in">append</span>(hex_list[i] ^ <span class="hljs-number">0</span>x1)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;processed_bytes[%d]: &#x27;</span>,i)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(processed_bytes[i]))<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        elif i % <span class="hljs-number">5</span> == <span class="hljs-number">2</span>:      # 第三个字节<br>            processed_bytes.<span class="hljs-built_in">append</span>(hex_list[i] ^ <span class="hljs-number">0</span>xf3)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;processed_bytes[%d]: &#x27;</span>,i)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(processed_bytes[i]))<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        elif i % <span class="hljs-number">5</span> == <span class="hljs-number">3</span>:      # 第二个节<br>            processed_bytes.<span class="hljs-built_in">append</span>(hex_list[i] ^ <span class="hljs-number">0</span>x40)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;processed_bytes[%d]: &#x27;</span>,i)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(processed_bytes[i]))<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        elif i % <span class="hljs-number">5</span> == <span class="hljs-number">4</span>:      # 第三个字节<br>            processed_bytes.<span class="hljs-built_in">append</span>(hex_list[i] ^ <span class="hljs-number">0</span>xee)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;processed_bytes[%d]: &#x27;</span>,i)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(processed_bytes[i]))<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>    <br>    # 转换为字符串<br>    r1 = <span class="hljs-string">&#x27;&#x27;</span>.<span class="hljs-built_in">join</span>(<span class="hljs-built_in">chr</span>(b) for b in processed_bytes)<br>    <span class="hljs-built_in">print</span>(r1)<br>    <span class="hljs-built_in">print</span>(r1.<span class="hljs-built_in">encode</span>(<span class="hljs-string">&#x27;latin1&#x27;</span>))<br>    return <span class="hljs-built_in">bytes</span>(processed_bytes)<br><br># 示例十六进制列表<br><br>orign_hex_list = [<span class="hljs-number">0</span>x29, <span class="hljs-number">0</span>x2B, <span class="hljs-number">0</span>x2C, <span class="hljs-number">0</span>x30, <span class="hljs-number">0</span>x36, <span class="hljs-number">0</span>x43, <span class="hljs-number">0</span>x48, <span class="hljs-number">0</span>x49, <span class="hljs-number">0</span>x4B, <span class="hljs-number">0</span>x59,<br>    <span class="hljs-number">0</span>x5D, <span class="hljs-number">0</span>x60, <span class="hljs-number">0</span>x68, <span class="hljs-number">0</span>x71, <span class="hljs-number">0</span>x72, <span class="hljs-number">0</span>x75, <span class="hljs-number">0</span>x75, <span class="hljs-number">0</span>x81, <span class="hljs-number">0</span>x81, <span class="hljs-number">0</span>x82,<br>    <span class="hljs-number">0</span>x83, <span class="hljs-number">0</span>x83, <span class="hljs-number">0</span>x84, <span class="hljs-number">0</span>x87, <span class="hljs-number">0</span>x87, <span class="hljs-number">0</span>x91, <span class="hljs-number">0</span>x97, <span class="hljs-number">0</span>x9B]<br><br>orign_hex_list.<span class="hljs-built_in">reverse</span>()<br><br>result = <span class="hljs-built_in">process_hex_list</span>(orign_hex_list)<br><br>end_hex_list = <span class="hljs-built_in">list</span>(result)<br><br>end_hex_list.<span class="hljs-built_in">reverse</span>()<br><br>end_hex_list[<span class="hljs-number">13</span>], end_hex_list[<span class="hljs-number">24</span>] = end_hex_list[<span class="hljs-number">24</span>], end_hex_list[<span class="hljs-number">13</span>]<br><br>end_result = <span class="hljs-built_in">bytes</span>(end_hex_list)<br><br><span class="hljs-built_in">print</span>(result)<br>p=<span class="hljs-built_in">process</span>(<span class="hljs-string">&#x27;/challenge/babyrev-level-7-1&#x27;</span>)<br>#ques=p.<span class="hljs-built_in">recvuntil</span>(b<span class="hljs-string">&#x27;Ready to receive your license key!&#x27;</span>)<br>#<span class="hljs-built_in">print</span>(ques.<span class="hljs-built_in">decode</span>())<br>p.<span class="hljs-built_in">sendline</span>(end_result)<br><span class="hljs-built_in">sleep</span>(<span class="hljs-number">5</span>)  # 等待程序输出完整<br><br>out=p.<span class="hljs-built_in">recv</span>(<span class="hljs-number">4096</span>)<br><span class="hljs-built_in">print</span>(out.<span class="hljs-built_in">decode</span>())<br></code></pre></td></tr></table></figure>
+<p>为了避免老眼昏花，直接把他的所有东西都逆转进行了一遍得到结果</p>
+<h2 id="Level8-0"><a href="#Level8-0" class="headerlink" title="Level8.0"></a>Level8.0</h2><p>读取0x25个字节，也就是37个字节，交换索引为2和30的两个字节，之后进行了排序，之后全都异或0x98，之后进行了倒序，之后，按照三个字节为一组进行异或，然后再逆序，之后6个字节为一组进行异或，当我全都翻过来，到了排序后，那就是一个已经排序完毕的<img src="/2025/03/04/Reverse-Engineering/QQ_1732620949503.png" alt="QQ_1732620949503"></p>
+<p>这里的buf是一个24字节的数组</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732621517119.png" alt="QQ_1732621517119"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732621670667.png" alt="QQ_1732621670667"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732626247023.png" alt="QQ_1732626247023"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732626339895.png" alt="QQ_1732626339895"></p>
+<p>问题出在了</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732627430323.png" alt="QQ_1732627430323"></p>
+<p>这里没有修改原本的元素,没有解决</p>
+<figure class="highlight leaf"><table><tr><td class="code"><pre><code class="hljs leaf">from pwn import *<br>def process_list_6(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 6 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x65)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 6 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x5)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 6 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xdf)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 6 == 3:      <span class="hljs-punctuation">#</span> 第二个节<br>            processed_bytes.append(hex_list[i] ^ 0x36)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 6 == 4:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x10)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 6 == 5:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xdf)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>    <br>    <span class="hljs-punctuation">#</span> 转换为字符串<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">r1</span> = &#x27;&#x27;.join(chr(b) for b in processed_bytes)<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>)</span><br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>.<span class="hljs-keyword">encode</span><span class="hljs-params">(&#x27;<span class="hljs-variable">latin1</span>&#x27;)</span>)</span><br>    return bytes(processed_bytes)<br><br><br>def process_list_3(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 3 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x86)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 3 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x90)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 3 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x6f)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>    <br>    <span class="hljs-punctuation">#</span> 转换为字符串<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">r1</span> = &#x27;&#x27;.join(chr(b) for b in processed_bytes)<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>)</span><br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>.<span class="hljs-keyword">encode</span><span class="hljs-params">(&#x27;<span class="hljs-variable">latin1</span>&#x27;)</span>)</span><br>    return bytes(processed_bytes)<br><br><span class="hljs-punctuation">#</span> 示例十六进制列表<br><br>hex_list = [0xF3, 0x79, 0xB5, 0xA2, 0x6A, 0xB3, 0xF7, 0x7D, 0xB0, 0xA6, <br>    0x69, 0xBC, 0xFE, 0x77, 0xBA, 0xAE, 0x7E, 0xA7, 0xE0, 0x68,<br>    0xA4, 0xB2, 0x7A, 0xA2, 0xE7, 0x6E, 0xA1, 0xB7, 0x79, 0xAF,<br>    0xEA, 0x63, 0xAE, 0xB8, 0x74, 0xAD, 0xE8]<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">every</span> 6 bytes xor<br>bytes_6=process_list_6(hex_list)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">transfer</span> to lsit<br>list_6 = list(bytes_6)<br><br>print(&#x27;-----------this is after xor 6bytes---------------&#x27;)<br>print([hex(x) for x in list_6])<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">reverse</span><br>list_6.reverse()<br><br>print(&#x27;-----------this is after xor reverse---------------&#x27;)<br>print([hex(x) for x in list_6])<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">every</span> 3 bytes xor<br>byte_3 = process_list_3(list_6)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">transfer</span> to list<br>list_3 = list(byte_3)<br><br>print(&#x27;-----------this is after xor 3bytes---------------&#x27;)<br>print([hex(x) for x in list_3])<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">reverse</span><br>list_3.reverse()<br><br>print(&#x27;-----------this is after  reverse---------------&#x27;)<br>print([hex(x) for x in list_3])<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">xor</span> 0x98<br>xor_value = 0x98<br>list_xor = [x ^ xor_value for x in list_3]<br><br>print(&#x27;-----------this is after xor 0x98---------------&#x27;)<br>print([hex(x) for x in list_xor])<br><br><br>list_xor[2] , list_xor[30] = list_xor[30] , list_xor[2]<br><br><br>end_result = bytes(list_xor)<br><br>p=process(&#x27;/challenge/babyrev-level-8-0&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">ques</span>=p.recvuntil(b&#x27;Ready to receive your license key!&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">ques</span>.<span class="hljs-keyword">decode</span><span class="hljs-params">()</span>)</span><br>p.sendline(end_result)<br>sleep(5)  <span class="hljs-punctuation">#</span> 等待程序输出完整<br><br>out=p.recv(4096)<br>print(out.decode())<br></code></pre></td></tr></table></figure>
+<p>问题出在这个反了吗的</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732628281590.png" alt="QQ_1732628281590"></p>
+<p>源程序反着来的吗的，解决</p>
+<h2 id="Level8-1"><a href="#Level8-1" class="headerlink" title="Level8.1"></a>Level8.1</h2><p>观察源程序，read0x25，之后进行逆序，7字节异或，之后第6个字节和第31个字节互换，然后，5字节异或，排序，4字节异或，4字节异或，</p>
+<figure class="highlight leaf"><table><tr><td class="code"><pre><code class="hljs leaf">from pwn import *<br>def process_list_7(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 7 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x8f)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 7 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x7)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 7 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x6e)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 7 == 3:      <span class="hljs-punctuation">#</span> 第二个节<br>            processed_bytes.append(hex_list[i] ^ 0xa2)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 7 == 4:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xf8)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 7 == 5:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xb6)<br>        elif i % 7 == 6:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xbc)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>    <br>    <span class="hljs-punctuation">#</span> 转换为字符串<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">r1</span> = &#x27;&#x27;.join(chr(b) for b in processed_bytes)<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>)</span><br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>.<span class="hljs-keyword">encode</span><span class="hljs-params">(&#x27;<span class="hljs-variable">latin1</span>&#x27;)</span>)</span><br>    return bytes(processed_bytes)<br><br>def process_list_5(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 5 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x3d)<br>        elif i % 5 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x77)<br>        elif i % 5 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xc1)<br>        elif i % 5 == 3:      <span class="hljs-punctuation">#</span> 第二个节<br>            processed_bytes.append(hex_list[i] ^ 0x64)<br>        elif i % 5 == 4:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x66)<br>    return bytes(processed_bytes)<br><br>def process_list_4_1(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 4 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x49)<br>        elif i % 4 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x4e)<br>        elif i % 4 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x47)<br>        elif i % 4 == 3:      <span class="hljs-punctuation">#</span> 第二个节<br>            processed_bytes.append(hex_list[i] ^ 0x78)<br>    return bytes(processed_bytes)<br><br>def process_list_4_2(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 4 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x93)<br>        elif i % 4 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0xcd)<br>        elif i % 4 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0xcd)<br>        elif i % 4 == 3:      <span class="hljs-punctuation">#</span> 第二个节<br>            processed_bytes.append(hex_list[i] ^ 0x39)<br>    return bytes(processed_bytes)<br><br>def process_list_3(hex_list):<br>    <span class="hljs-punctuation">#</span> 用于存储处理后的字节<br>    processed_bytes = []<br>    <br>    <span class="hljs-punctuation">#</span> 遍历列表，按每三个字节处理<br>    for i in range(len(hex_list)):<br>        if i % 3 == 0:        <span class="hljs-punctuation">#</span> 第一个字节<br>            processed_bytes.append(hex_list[i] ^ 0x6f)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 3 == 1:      <span class="hljs-punctuation">#</span> 第二个字节<br>            processed_bytes.append(hex_list[i] ^ 0x90)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>        elif i % 3 == 2:      <span class="hljs-punctuation">#</span> 第三个字节<br>            processed_bytes.append(hex_list[i] ^ 0x86)<br>            <span class="hljs-punctuation">#</span> print(&#x27;processed_bytes[%d]: &#x27;,i)<br>            <span class="hljs-punctuation">#</span> print(hex(processed_bytes[i]))<br>            <span class="hljs-punctuation">#</span> print(&#x27;\n&#x27;)<br>    <br>    <span class="hljs-punctuation">#</span> 转换为字符串<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">r1</span> = &#x27;&#x27;.join(chr(b) for b in processed_bytes)<br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>)</span><br>    <span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">r1</span>.<span class="hljs-keyword">encode</span><span class="hljs-params">(&#x27;<span class="hljs-variable">latin1</span>&#x27;)</span>)</span><br>    return bytes(processed_bytes)<br><br><span class="hljs-punctuation">#</span> 示例十六进制列表<br><br>hex_list = [0xDA, 0x80, 0x8E, 0x45, 0xCB, 0x97, 0x93, 0x65, 0xF3, 0xD0,<br>    0xDC, 0x21, 0xB8, 0xED, 0x1B, 0xD9, 0x44, 0x21, 0x22, 0xE9,<br>    0x70, 0x2F, 0x38, 0xF3, 0x68, 0x36, 0x3D, 0xF8, 0x19, 0x5B,<br>    0x56, 0xA5, 0x36, 0x70, 0x7C, 0xBA, 0x21]<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">every</span> 4_2 bytes xor<br>bytes_4_2=process_list_4_2(hex_list)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">transfer</span> to lsit<br>list_4_2 = list(bytes_4_2)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">every</span> 4_1 bytes xor<br>bytes_4_1=process_list_4_1(list_4_2)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">transfer</span> to lsit<br>list_4_1 = list(bytes_4_1)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">every</span> 5 bytes xor<br>bytes_5=process_list_5(list_4_1)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">transfer</span> to lsit<br>list_5 = list(bytes_5)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">swap</span><br>list_5[5] , list_5[30] = list_5[30] , list_5[5]<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">every</span> 5 bytes xor<br>bytes_7=process_list_7(list_5)<br><br><span class="hljs-punctuation">#</span><span class="hljs-keyword">transfer</span> to lsit<br>list_7 = list(bytes_7)<br><br>list_7.reverse()<br><br>end_result = bytes(list_7)<br><br>p=process(&#x27;/challenge/babyrev-level-8-1&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">ques</span>=p.recvuntil(b&#x27;Ready to receive your license key!&#x27;)<br><span class="hljs-punctuation">#</span><span class="hljs-keyword">print</span><span class="hljs-params">(<span class="hljs-variable">ques</span>.<span class="hljs-keyword">decode</span><span class="hljs-params">()</span>)</span><br>p.sendline(end_result)<br>sleep(2)  <span class="hljs-punctuation">#</span> 等待程序输出完整<br><br>out=p.recv(4096)<br>print(out.decode())<br></code></pre></td></tr></table></figure>
+<h2 id="Level9-0"><a href="#Level9-0" class="headerlink" title="Level9.0"></a>Level9.0</h2><p>这题没太看懂，先看看让干啥吧</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732630490453.png" alt="QQ_1732630490453"></p>
+<p>首先看这个，他read0x1a，也就是26个字节，但是buf只有8字节，buf，v16，v17和v18的低2字节都在read里，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732630593382.png" alt="QQ_1732630593382"></p>
+<p>看挑战程序的话，就是</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732630685400.png" alt="QQ_1732630685400"></p>
+<p>更改了这几个位置的字节，那就是v5是填写的偏移，v4是填写的目标字节的值，v5是16位的数，之后，读取了之后，他通过md5进行了哈希，因此不可逆，之后，帖子说这个v12是程序加载基址，那么，原来如此，这里可以任意patch，所以说，可以直接将最后win的那个判断改成不相等才跳过，那这样的话就直接win了</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732631837626.png" alt="QQ_1732631837626"></p>
+<p>jnz是0x75，而jz是0x74，他是</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732631891483.png" alt="QQ_1732631891483"></p>
+<p>在不等于这里，他是不等于才跳走，所以改成等于条件不成立就不跳走了</p>
+<h2 id="Level9-1"><a href="#Level9-1" class="headerlink" title="Level9.1"></a>Level9.1</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732632303479.png" alt="QQ_1732632303479"></p>
+<p>226b处</p>
+<h2 id="Level10-0"><a href="#Level10-0" class="headerlink" title="Level10.0"></a>Level10.0</h2><p>只允许一个字节了，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732632591400.png" alt="QQ_1732632591400"></p>
+<h2 id="level10-1"><a href="#level10-1" class="headerlink" title="level10.1"></a>level10.1</h2><p>0x23c1</p>
+<h2 id="level11-0"><a href="#level11-0" class="headerlink" title="level11.0"></a>level11.0</h2><p><img src="/2025/03/04/Reverse-Engineering/QQ_1732632841665.png" alt="QQ_1732632841665"></p>
+<p>说是之后会检查，然后让修改两次，所以我才回头还要修改回来</p>
+<p>是对s1和s2的内容进行了一个相同性检查，所以，正常的修改，触发了完整性检查，为什么呢，    懂了，还需要把那个检查完整性的改了，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/QQ_1732633555585.png" alt="QQ_1732633555585"></p>
+<p>222b </p>
+<p>拿下</p>
+<h2 id="Level11-1"><a href="#Level11-1" class="headerlink" title="Level11.1"></a>Level11.1</h2><p>2559,247b，这里有一个坑，就是他是一个拓展过的jnz，是0f 85，后面跟着32位的偏移量，而之前的是跟着8位的，所以这里应该是247c,变成0x84</p>
+<h2 id="Level12-0"><a href="#Level12-0" class="headerlink" title="Level12.0"></a>Level12.0</h2><p><img src="/2025/03/04/Reverse-Engineering/image-20241202191234867.png" alt="image-20241202191234867"></p>
+<p>主程序没有看到什么特殊的，之后运转了下面那个函数，传入了v3，也就是256个字节的0，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202191402026.png" alt="image-20241202191402026"></p>
+<p>在这个函数里面，首先读入了8个字节，放在了a1[60]的位置，然后，赋值了一系列的，从a1[92]到a1[99]的8个字节，之后v1被赋值为memcmp的返回值，比较的就是这两个8字节，如果v1是非0，那不对，如果说v1为0才会打印，那就是要这两个位置都相同呗，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202195333308.png" alt="image-20241202195333308"></p>
+<p>要发的字节就是这些了，那么发送的方式有很多种，第一种是通过struct中的pack函数将数字转换为二进制数据并且按照指定格式打包</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">a1</span> = [<span class="hljs-number">47</span>, <span class="hljs-number">66</span>, <span class="hljs-number">117</span>, -<span class="hljs-number">18</span>, -<span class="hljs-number">4</span>, <span class="hljs-number">89</span>, -<span class="hljs-number">54</span>, <span class="hljs-number">53</span>]<br><br><span class="hljs-comment"># 使用 struct.pack 将每个整数打包为字节</span><br><span class="hljs-comment"># &#x27;b&#x27; 格式符表示 signed char（-128 到 127），这样负数会被转换为 2 的补码</span><br><span class="hljs-attr">data</span> = struct.pack(<span class="hljs-string">&#x27;8b&#x27;</span>, *a1)<br></code></pre></td></tr></table></figure>
+<p>第二种是通过array模块的array创建一个字节数组</p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># 要发送的数值</span><br>a1 = [<span class="hljs-number">47</span>, <span class="hljs-number">66</span>, <span class="hljs-number">117</span>, <span class="hljs-number">-18</span>, <span class="hljs-number">-4</span>, <span class="hljs-number">89</span>, <span class="hljs-number">-54</span>, <span class="hljs-number">53</span>]<br><br><span class="hljs-meta"># 使用 array 模块创建一个包含字节的数组</span><br><span class="hljs-meta"># <span class="hljs-string">&#x27;b&#x27;</span> 表示有符号字节（signed char）</span><br>byte_array = array.array(<span class="hljs-string">&#x27;b&#x27;</span>, a1)<br><br><span class="hljs-meta"># 发送字节数据</span><br>p.<span class="hljs-built_in">send</span>(byte_array.tobytes())<br></code></pre></td></tr></table></figure>
+<p>第三个是通过手动转换，因为一个字节的话，负数用的是他的补码形式</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">a1</span> = [<span class="hljs-number">47</span>, <span class="hljs-number">66</span>, <span class="hljs-number">117</span>, -<span class="hljs-number">18</span>, -<span class="hljs-number">4</span>, <span class="hljs-number">89</span>, -<span class="hljs-number">54</span>, <span class="hljs-number">53</span>]<br><br><span class="hljs-comment"># 手动将每个整数转换为字节（负数转补码）</span><br><span class="hljs-attr">data</span> = bytearray(((x + <span class="hljs-number">256</span>) % <span class="hljs-number">256</span>) for x in a1)<br><br></code></pre></td></tr></table></figure>
+<p>注意，bytes和b’’不一样，bytes是一个内建类型，表示不可变的字节序列，而b‘’是通过在字符串前面添加b表示这是一个字节序列</p>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">from</span> pwn <span class="hljs-keyword">import</span> *<br><span class="hljs-title">p</span>=process(&#x27;/challenge/babyrev-level-<span class="hljs-number">12</span>-<span class="hljs-number">0</span>&#x27;)<br><span class="hljs-title">a1</span> = [<span class="hljs-number">47</span>, <span class="hljs-number">66</span>, <span class="hljs-number">117</span>, -<span class="hljs-number">18</span>, -<span class="hljs-number">4</span>, <span class="hljs-number">89</span>, -<span class="hljs-number">54</span>, <span class="hljs-number">53</span>]<br><br><span class="hljs-meta"># 将每个数值转换为字节，并打包成二进制数据</span><br><span class="hljs-meta"># 使用 &#x27;b&#x27; 格式符，表示一个字节（signed char），范围是 -128 到 127</span><br><span class="hljs-meta"># 如果需要处理负数，struct 会将其转换为 2 的补码表示</span><br><span class="hljs-class"><span class="hljs-keyword">data</span> = bytes([((<span class="hljs-title">x</span> + 256) % 256) for x in a1])</span><br><br>或者<br><span class="hljs-class"><span class="hljs-keyword">data</span> = bytes([0<span class="hljs-title">x2f</span>,0<span class="hljs-title">x42</span>,0<span class="hljs-title">x75</span>,0<span class="hljs-title">xee</span>,0<span class="hljs-title">xfc</span>,0<span class="hljs-title">x59</span>,0<span class="hljs-title">xca</span>,0<span class="hljs-title">x35</span>])</span><br><span class="hljs-title">p</span>.send(<span class="hljs-class"><span class="hljs-keyword">data</span>)</span><br><span class="hljs-title">sleep</span>(<span class="hljs-number">2</span>)  # 等待程序输出完整<br><br><span class="hljs-title">out</span>=p.recv(<span class="hljs-number">4096</span>)<br><span class="hljs-title">print</span>(out.decode())<br></code></pre></td></tr></table></figure>
+<h2 id="Level12-1"><a href="#Level12-1" class="headerlink" title="Level12.1"></a>Level12.1</h2><p><img src="/2025/03/04/Reverse-Engineering/image-20241202201331027.png" alt="image-20241202201331027"></p>
+<h2 id="Level13-0"><a href="#Level13-0" class="headerlink" title="Level13.0"></a>Level13.0</h2><p>让我们深入研究逆向工程混淆代码！此挑战使用基于 VM 的混淆：逆向工程自定义模拟器和架构以了解如何获取标志！如果你很聪明的话，你就不需要逆向太多的 VM 代码。</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202201840855.png" alt="image-20241202201840855"></p>
+<p>这里来看，他读取了8个字节到a1+55这个位置，之后</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202202057907.png" alt="image-20241202202057907"></p>
+<p>目的仍然是a1+87的8个字节和a1+55的8个字节相同，这个函数传进来了一个256字节的起始位置，</p>
+<p>三个参数，第二个参数来看，1是b，64是c，2是a，</p>
+<p>首先看看这个样子，stm *0x87就是0xcb，stm *0x88为0x21，也就是说以b为基底，然后c为一个1，每次加一下他，那8个字节就是，0xcb，0x21，0xb3,0xb0,0xd4,0xae,0x9c,0x1</p>
+<h2 id="Level13-1"><a href="#Level13-1" class="headerlink" title="Level13.1"></a>Level13.1</h2><p><img src="/2025/03/04/Reverse-Engineering/image-20241202205036562.png" alt="image-20241202205036562"></p>
+<p>这8个字节应该说，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202205331646.png" alt="image-20241202205331646"></p>
+<p>传入的仍然是256个字节的0，之后，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202205405061.png" alt="image-20241202205405061"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202205613645.png" alt="image-20241202205613645"></p>
+<p>sub1533又跳到了sub1415，然后这里是，a3为位置，a2是对应的变量代表的值</p>
+<p>那也就是说16这等于88，然后4等于1，这一个应该是那个索引，之后2等于222，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202205910190.png" alt="image-20241202205910190"></p>
+<p>0x1687这个函数，首先，传入了a1，16，2，这个16应该就是下标索引，2的话就是2里面的值，也就是说a1[88]=222，以此类推8个字节分别是222，86，175，83，92，217，104，188</p>
+<h2 id="Level14-0"><a href="#Level14-0" class="headerlink" title="Level14.0"></a>Level14.0</h2><p><img src="/2025/03/04/Reverse-Engineering/image-20241202210541161.png" alt="image-20241202210541161"></p>
+<p>imm的作用已经知道了，现在看一下sys的作用，第一个sys传进去了a1，32，8，能看出来32就是最开始的b，而8是a，那就是说传入了b和a，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202210713305.png" alt="image-20241202210713305"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202211326046.png" alt="image-20241202211326046"></p>
+<p>在sys里面，有一个选择结构，是根据a2进行选择的，32是0x20，所以是一个读取操作，a1[258]就到了main函数的v4的第三个字节，但是整个v4都是0啊，没太看懂，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202215534330.png" alt="image-20241202215534330"></p>
+<p>Write_register(a1,8,v9)</p>
+<p>但是通过return<img src="/2025/03/04/Reverse-Engineering/image-20241202215055964.png" alt="image-20241202215055964"></p>
+<p>能看到，如果a3不为0的话，这里a3就是8，那么就会执行这个，<img src="/2025/03/04/Reverse-Engineering/image-20241202215212631.png" alt="image-20241202215212631"></p>
+<p>return了a1[256]给v11，v12是</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202215400452.png" alt="image-20241202215400452"></p>
+<p>应该就是一个字符，这里也就是a，最后打印出来的就是<img src="/2025/03/04/Reverse-Engineering/image-20241202215439457.png" alt="image-20241202215439457"></p>
+<p>对应的0x4的值是a1[256]</p>
+<p>回到比较结果</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202221430148.png" alt="image-20241202221430148"></p>
+<p>比较了四个字节，比较的是137和105开始的四个字节</p>
+<p>137开始的四个字节是0x67,0x30,0x9d,0xba</p>
+<p>看了半天，结果直接输入就行了，我服了，那我在分析nm呢,那从结论返回推过程，看一下怎么输入到a1+105的，首先a=0，b=105，c=4，</p>
+<p>之后sys （0x20，a）</p>
+<p>原来如此，我明白了，前面imm赋值过程中其实就改变了那几个数，这下就明了了，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202224449181.png" alt="image-20241202224449181"></p>
+<p>首先第一个imm，</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202224504315.png" alt="image-20241202224504315"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202224516811.png" alt="image-20241202224516811"></p>
+<p>32 ，105，那就是将a1[257]变成了105</p>
+<p>1 ，4 就是将a1[258]变成了4</p>
+<p>8,0 就是把a1[256]变成了0，接下来再进入到之前的流程</p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202224638561.png" alt="image-20241202224638561"></p>
+<p>sys的read过程中，v5=4，然后256-105&gt;4，所以if并不触发，之后就是v6=sys_read,相当于read(0,&amp;a[105],4)读取了4个字节，他妈的，分析完毕！结束！win！</p>
+<h2 id="level14-1"><a href="#level14-1" class="headerlink" title="level14.1"></a>level14.1</h2><p><img src="/2025/03/04/Reverse-Engineering/image-20241202225936574.png" alt="image-20241202225936574"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/image-20241202230240268.png" alt="image-20241202230240268"></p>
+<p><img src="/2025/03/04/Reverse-Engineering/../image/image-20241202230428697.png" alt="image-20241202230428697"></p>
+
+    </div>
+
+    <!-- 返回主页链接 -->
+    <div class="text-center my-8">
+        <a href="/" class="text-hacker-color1 underline hover:text-hacker-color2">← Back to Home</a>
+    </div>
+
+    <footer class="bg-black text-gray-400 py-4">
+    <div class="container mx-auto text-center">
+      <p>© <span id="current-year"></span>  Red Fish 
+        <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexploit">Hexpolit</a></p>
+    </div>
+  </footer>
+  
+  <script> 
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+  
+
+
+</body>
+</html>
