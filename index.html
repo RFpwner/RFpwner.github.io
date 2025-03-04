@@ -164,51 +164,19 @@
       <div class="w-full">
         
           <div class="post-item group border-b border-b-hacker-color3 ">
-            <a href="/2025/03/04/test5/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
+            <a href="/2025/03/04/%E8%A7%A3%E5%86%B3mac%E4%B8%8A%E7%9A%84pwntools%E9%97%AE%E9%A2%98/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
               <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
-                test5
+                解决mac上的pwntools问题
               </h2>
               <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
                 2025-03-04
               </p>
               <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                
-from pwn import *p=process(&amp;#x27;./vuln&amp;#x27;)p.interactive()
-mov rbp,rsi
-...
-              </p>
-            </a>
-          </div>
-        
-          <div class="post-item group border-b border-b-hacker-color3 ">
-            <a href="/2025/03/04/test4/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
-              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
-                test4
-              </h2>
-              <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
-                2025-03-04
-              </p>
-              <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                当点击或访问时,自动触发构造的pyload,多用于修改资料,密码等
-绕过方式
-当点击或访问时,自动触发构造的pyload,多用于修改资料,密码等
-绕过方式
-
-...
-              </p>
-            </a>
-          </div>
-        
-          <div class="post-item group border-b border-b-hacker-color3 ">
-            <a href="/2025/03/04/test3/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
-              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
-                test3
-              </h2>
-              <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
-                2025-03-04
-              </p>
-              <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                ...
+                解决mac上的pwntools问题首先是pwntools的环境配置，brew下载完毕之后，
+进入python3的交互界面
+import sitesite.getsitepackages()回显/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages
+之后，进入到该目录，然后创建一个mypath.pth
+里面加入/opt/homebrew/Cellar/pwntools/4.13.1/libexec/lib/python3.13/...
               </p>
             </a>
           </div>
@@ -217,23 +185,6 @@ mov rbp,rsi
             <a href="/2025/03/04/test2/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
               <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
                 test2
-              </h2>
-              <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
-                2025-03-04
-              </p>
-              <p class="post-excerpt text-hacker-color3 group-hover:text-white">
-                当点击或访问时,自动触发构造的pyload,多用于修改资料,密码等
-绕过方式
-
-...
-              </p>
-            </a>
-          </div>
-        
-          <div class="post-item group border-b border-b-hacker-color3 ">
-            <a href="/2025/03/04/test/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
-              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
-                test
               </h2>
               <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
                 2025-03-04
@@ -315,6 +266,16 @@ mov rbp,rsi
           <!-- 标签部分 -->
           <h3 class="text-hacker-color1 font-bold text-lg">Tags</h3>
           <div class="flex flex-wrap justify-start items-center">
+            
+              <a href="https://RFpwner.github.io/tags/mac/" class="text-hacker-color3 hover:bg-hacker-hover-color hover:text-white block border border-hacker-color3 hover:border-dotted rounded-sm py-0.5 px-2 mr-4 mb-2">
+                mac <sub>1</sub>
+              </a>
+              <br />
+            
+              <a href="https://RFpwner.github.io/tags/pwntools/" class="text-hacker-color3 hover:bg-hacker-hover-color hover:text-white block border border-hacker-color3 hover:border-dotted rounded-sm py-0.5 px-2 mr-4 mb-2">
+                pwntools <sub>1</sub>
+              </a>
+              <br />
             
             
           </div>

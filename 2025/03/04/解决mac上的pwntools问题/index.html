@@ -27,7 +27,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RFpwner - test3</title>
+    <title>RFpwner - 解决mac上的pwntools问题</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="/css/highlight.css">
@@ -161,7 +161,7 @@
 <meta name="generator" content="Hexo 5.3.0"></head>
 <body class="bg-black text-hacker-color3 container mx-auto">
     <!-- 文章标题 -->
-    <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">test3</h1>
+    <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">解决mac上的pwntools问题</h1>
 
     <!-- 发布时间 -->
     <p class="text-hacker-color3 text-center text-sm mb-4">
@@ -170,7 +170,25 @@
 
     <!-- 文章内容 -->
     <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight">
-        
+        <h1 id="解决mac上的pwntools问题"><a href="#解决mac上的pwntools问题" class="headerlink" title="解决mac上的pwntools问题"></a>解决mac上的pwntools问题</h1><p>首先是pwntools的环境配置，brew下载完毕之后，</p>
+<p>进入python3的交互界面</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> site<br>site.getsitepackages()<br>回显<br>/opt/homebrew/Cellar/python@<span class="hljs-number">3.13</span>/<span class="hljs-number">3.13</span><span class="hljs-number">.0_1</span>/Frameworks/Python.framework/Versions/<span class="hljs-number">3.13</span>/lib/python3<span class="hljs-number">.13</span>/site-packages<br></code></pre></td></tr></table></figure>
+<p>之后，进入到该目录，然后创建一个mypath.pth</p>
+<p>里面加入<code>/opt/homebrew/Cellar/pwntools/4.13.1/libexec/lib/python3.13/site-packages</code></p>
+<p>之后，就可以全局用了</p>
+<p>之后，下载bintils，</p>
+<p><code>brew install https://raw.githubusercontent.com/Gallopsled/pwntools-binutils/master/macos/binutils-amd64.rb</code></p>
+<p>这样不行，打开这个页面</p>
+<p><img src="/2025/03/04/%E8%A7%A3%E5%86%B3mac%E4%B8%8A%E7%9A%84pwntools%E9%97%AE%E9%A2%98/image.png" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BinutilsAmd64</span> &lt; Formula<br>  homepage <span class="hljs-string">&quot;https://www.gnu.org/software/binutils/binutils.html&quot;</span><br>  url <span class="hljs-string">&quot;https://ftpmirror.gnu.org/binutils/binutils-2.38.tar.gz&quot;</span><br>  mirror <span class="hljs-string">&quot;https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.gz&quot;</span><br>  sha256 <span class="hljs-string">&quot;b3f1dc5b17e75328f19bd88250bee2ef9f91fc8cbb7bd48bdb31390338636052&quot;</span><br><br>  <span class="hljs-comment"># No --default-names option as it interferes with Homebrew builds.</span><br><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">install</span><br>    system <span class="hljs-string">&quot;./configure&quot;</span>, <span class="hljs-string">&quot;--disable-debug&quot;</span>,<br>                          <span class="hljs-string">&quot;--disable-dependency-tracking&quot;</span>,<br>                          <span class="hljs-string">&quot;--prefix=#&#123;prefix&#125;&quot;</span>,<br>                          <span class="hljs-string">&quot;--target=amd64-unknown-linux-gnu&quot;</span>,<br>                          <span class="hljs-string">&quot;--disable-static&quot;</span>,<br>                          <span class="hljs-string">&quot;--disable-multilib&quot;</span>,<br>                          <span class="hljs-string">&quot;--disable-nls&quot;</span>,<br>                          <span class="hljs-string">&quot;--disable-werror&quot;</span><br>    system <span class="hljs-string">&quot;make&quot;</span>, <span class="hljs-string">&quot;MAKEINFO=true&quot;</span>, <span class="hljs-string">&quot;-j&quot;</span><br>    system <span class="hljs-string">&quot;make&quot;</span>, <span class="hljs-string">&quot;MAKEINFO=true&quot;</span>, <span class="hljs-string">&quot;install&quot;</span><br>    system <span class="hljs-string">&quot;rm&quot;</span>, <span class="hljs-string">&quot;-rf&quot;</span>, <span class="hljs-string">&quot;#&#123;prefix&#125;/share/info&quot;</span><br>  end<br><br>  test do<br>    <span class="hljs-keyword">assert</span> .include? <span class="hljs-string">&#x27;main&#x27;</span><br>    assert_equal <span class="hljs-number">0</span>, <span class="hljs-number">0.</span>exitstatus<br>  end<br>end<br></code></pre></td></tr></table></figure>
+<p>之后在github创建一个仓库，然后里面</p>
+<p><img src="/2025/03/04/%E8%A7%A3%E5%86%B3mac%E4%B8%8A%E7%9A%84pwntools%E9%97%AE%E9%A2%98/image%201.png" alt="image.png"></p>
+<p>之后，通过<code>brew tap lhy/my-tap [https://gitee.com/liu-sad/binutils.gi](https://gitee.com/liu-sad/binutils.git)t</code></p>
+<p>创建一个tap仓库好像是，然后就可以本地下载了，</p>
+<p>brew install binutils-amd64</p>
+<p>然后，运行成功！</p>
+<p><img src="/2025/03/04/%E8%A7%A3%E5%86%B3mac%E4%B8%8A%E7%9A%84pwntools%E9%97%AE%E9%A2%98/image%202.png" alt="image.png"></p>
+
     </div>
 
     <!-- 返回主页链接 -->
